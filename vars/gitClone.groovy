@@ -2,7 +2,7 @@ def call(String stageName){
 
   if ("${stageName}" == "Clone")
   {
-    sh "git clone"
+    sh "git clone https://github.com/CHAFAH/shared_library.git"
   }
   else if ("${stageName}" == "Build")
   {
