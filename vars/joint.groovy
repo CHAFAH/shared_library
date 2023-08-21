@@ -8,7 +8,7 @@ def call(String stageName) {
     else if ("${stageName}" == 'DEPLOY_ARTIFACTS') {
         sh 'mvn deploy'
     }
-    else if ("${stageName}" == 'Authorisation') {
+    else if ("${stageName}" == 'AUTHORISATION') {
          timeout(time: 48, unit: 'HOURS') {
                     // some block
                     input message: 'Approve or Decline'
