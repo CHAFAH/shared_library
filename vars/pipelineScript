@@ -1,0 +1,42 @@
+@Library ('shared-library') _
+pipeline {
+    agent any
+    tools {
+         maven 'maven3.9.4'
+    }
+    stages {
+        stage('GIT_SRC_CLONE') {
+            steps {
+                git branch: 'master', url: 'https://github.com/CHAFAH/GROUP-PROJECT.git'
+            }
+        }
+        stage('MAVEN BUILD') {
+            steps {
+                script{
+                    joint ('MAVEN BUILD')
+                }
+            }
+        }
+        stage('CODE_COVERAGE') {
+            steps {
+                script{
+                    joint ('CODE_COVERAGE')
+                }
+            }
+        } 
+        stage('DEPLOY_ARTIFACTS') {
+            steps {
+                script{
+                   joint ('DEPLOY_ARTIFACTS')
+                }
+            }
+        } 
+        stage('AUTHORISATION') {
+            steps {
+                script{
+                   joint ('AUTHORISATION')
+                }
+            }
+        }    
+   }
+}
